@@ -1,10 +1,17 @@
 import assert = require('assert')
-import doSomething from '../src'
+import HeadlessBrowser from '../src'
 
 
 suite('index', () => {})
 
 
-test('index', () => {
-  assert.equal(5, doSomething(1))
+test('set cookies from response', () => {
+  const browser = new HeadlessBrowser()
+
+  const cookies = ['NID']
+
+  return browser.get({uri: 'http://www.google.com'}).then(res => {
+    assert.equal(200, res.statusCode)
+    assert.deepEqual(cookies, Object.keys(browser.getCookies()))
+  })
 })
