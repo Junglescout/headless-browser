@@ -6,8 +6,9 @@
   "license": "ISC",
   "repository": "https://github.com/mcrowe/headless-browser",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -u qunit --recursive -r ./node_modules/ts-node/register test/*",
-    "build": "./node_modules/typescript/bin/tsc"
+    "test": "mocha -u qunit --recursive -r ./node_modules/ts-node/register test/*",
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "main": "lib/index.js",
   "typings": "lib/index",
@@ -15,16 +16,14 @@
     "lib/"
   ],
   "dependencies": {
-    "@types/bluebird": "^3.5.2",
-    "@types/request": "0.0.42",
-    "bluebird": "^3.4.7",
+    "@mcrowe/result": "0.0.2",
     "request": "^2.79.0"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.39",
     "@types/node": "^7.0.12",
     "mocha": "^3.2.0",
-    "ts-node": "^2.1.0",
-    "typescript": "^2.1.4"
+    "ts-node": "^3.1.0",
+    "typescript": "^2.4.1"
   }
 }

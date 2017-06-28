@@ -1,43 +1,65 @@
+import { Result, IResult } from '@mcrowe/result'
 import Request = require('request')
 import Cookie from './cookie'
 
 
-function getRequest(opts): Promise<any> {
-  return new Promise((resolve, reject) => {
+export interface IMap {
+  [key: string]: string
+}
+
+
+export interface IResponseHeaders {
+  'set-cookie'?: string[]
+  'content-type'?: string
+}
+
+
+export interface IHttpResponse {
+  statusCode: number
+  body: string
+  headers: IResponseHeaders
+}
+
+export type IRequestHeaders = IMap
+
+
+export type IHttpResult = IResult<IHttpResponse>
+
+
+function getRequest(opts): Promise<IHttpResult> {
+  return new Promise((resolve, _reject) => {
     Request.get(opts, (err, data) => {
       if (err) {
-        reject(err)
+        resolve( Result.Error(err.message) )
       } else {
-        resolve(data)
+        resolve( Result.OK(data) )
       }
     })
   })
 }
 
 
-export interface Map {
-  [key: string]: string
-}
+export default class HeadlessBrowser {
 
+  headers: IRequestHeaders
 
-class HeadlessBrowser {
-
-  headers: Map
-
-  constructor(headers: Map = {}) {
+  constructor(headers: IRequestHeaders = {}) {
     this.headers = { ...headers }
   }
 
-  get(opts) {
+  async get(opts): Promise<IHttpResult> {
     const defaults = {headers: this.headers}
     opts = Object.assign({}, defaults, opts)
-    return getRequest(opts).then((res) => {
-      this.setCookiesFromResponse(res)
-      return res
-    })
+    const res = await getRequest(opts)
+
+    if (res.ok) {
+      this.setCookiesFromResponse(res.data)
+    }
+
+    return res
   }
 
-  setHeaders(headers: Map) {
+  setHeaders(headers: IRequestHeaders) {
     this.headers = headers
   }
 
@@ -50,11 +72,11 @@ class HeadlessBrowser {
     this.setHeader('Cookie', cookie)
   }
 
-  getCookies(): Map {
+  getCookies(): IMap {
     return Cookie.parse(this.headers['Cookie'])
   }
 
-  setCookies(cookies: Map | string) {
+  setCookies(cookies: IMap | string) {
     if (typeof cookies == 'string') {
       return this.setCookies(Cookie.parse(cookies))
     } else {
@@ -76,7 +98,7 @@ class HeadlessBrowser {
     this.setHeader('Accept-Encoding', value)
   }
 
-  setCookiesFromResponse(res) {
+  setCookiesFromResponse(res: IHttpResponse) {
     const resCookies = res.headers['set-cookie']
 
     if (resCookies) {
@@ -86,6 +108,3 @@ class HeadlessBrowser {
   }
 
 }
-
-
-export default HeadlessBrowser

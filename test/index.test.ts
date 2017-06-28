@@ -11,7 +11,11 @@ test('set cookies from response', () => {
   const cookies = ['NID']
 
   return browser.get({uri: 'http://www.google.com'}).then(res => {
-    assert.equal(200, res.statusCode)
-    assert.deepEqual(cookies, Object.keys(browser.getCookies()))
+    assert(res.ok)
+
+    if (res.ok) {
+      assert.equal(200, res.data.statusCode)
+      assert.deepEqual(cookies, Object.keys(browser.getCookies()))
+    }
   })
 })

@@ -12,7 +12,7 @@ function serialize(object) {
 }
 
 
-function parse(string: string) {
+function parse(string: string | undefined) {
   if (!string) {
     return {}
   }
