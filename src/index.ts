@@ -131,13 +131,4 @@ export default class HeadlessBrowser {
       this.setCookies(cookies)
     }
   }
-
-  setHeadersFromResponse(res: IHttpResponse) {
-    const resHeaders = res.headers
-
-    if (resHeaders) {
-      this.setHeaders(resHeaders)
-    }
-  }
-
 }

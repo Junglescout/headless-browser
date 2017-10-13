@@ -27,5 +27,4 @@ export default class HeadlessBrowser {
     setUserAgent(value: string): void;
     setAcceptEncoding(value: string): void;
     setCookiesFromResponse(res: IHttpResponse): void;
-    setHeadersFromResponse(res: IHttpResponse): void;
 }
