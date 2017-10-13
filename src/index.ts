@@ -39,6 +39,19 @@ function getRequest(opts): Promise<IHttpResult> {
 }
 
 
+function postRequest(opts): Promise<IHttpResult> {
+  return new Promise((resolve, _reject) => {
+    Request.post(opts, (err, data) => {
+      if (err) {
+        resolve( Result.Error(err.message) )
+      } else {
+        resolve( Result.OK(data) )
+      }
+    })
+  })
+}
+
+
 export default class HeadlessBrowser {
 
   headers: IRequestHeaders
@@ -53,6 +66,18 @@ export default class HeadlessBrowser {
     const res = await getRequest(opts)
 
     if (res.ok) {
+      this.setCookiesFromResponse(res.data)
+    }
+
+    return res
+  }
+
+  async post(opts): Promise<IHttpResult> {
+    const defaults = {headers: this.headers}
+    opts = Object.assign({}, defaults, opts)
+    const res = await postRequest(opts)
+
+    if (res.ok) {            
       this.setCookiesFromResponse(res.data)
     }
 
@@ -104,6 +129,14 @@ export default class HeadlessBrowser {
     if (resCookies) {
       const cookies = resCookies.map(s => Cookie.parseSetString(s)).join('; ')
       this.setCookies(cookies)
+    }
+  }
+
+  setHeadersFromResponse(res: IHttpResponse) {
+    const resHeaders = res.headers
+
+    if (resHeaders) {
+      this.setHeaders(resHeaders)
     }
   }
 
