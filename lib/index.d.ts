@@ -17,6 +17,7 @@ export default class HeadlessBrowser {
     headers: IRequestHeaders;
     constructor(headers?: IRequestHeaders);
     get(opts: any): Promise<IHttpResult>;
+    post(opts: any): Promise<IHttpResult>;
     setHeaders(headers: IRequestHeaders): void;
     setHeader(key: string, value: string): void;
     setCookie(key: string, value: string): void;
