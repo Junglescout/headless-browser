@@ -1,6 +1,6 @@
 {
   "name": "@junglescoutofficial/headless-browser",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple in-memory browser that manages cookies.",
   "author": "Mitch Crowe <code@mitchcrowe.com> (http://www.mitchcrowe.com)",
   "license": "ISC",
