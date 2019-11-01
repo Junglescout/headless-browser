@@ -1,10 +1,13 @@
 {
-  "name": "@junglescout/headless-browser",
+  "name": "@junglescoutofficial/headless-browser",
   "version": "0.0.7",
   "description": "Simple in-memory browser that manages cookies.",
   "author": "Mitch Crowe <code@mitchcrowe.com> (http://www.mitchcrowe.com)",
   "license": "ISC",
-  "repository": "https://github.com/mcrowe/headless-browser",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Junglescout/headless-browser.git"
+  },
   "scripts": {
     "test": "mocha -u qunit --recursive -r ./node_modules/ts-node/register test/*",
     "build": "tsc",
@@ -25,5 +28,13 @@
     "mocha": "^6.2.2",
     "ts-node": "^3.1.0",
     "typescript": "^2.4.1"
+  },
+  "bugs": {
+    "url": "https://github.com/Junglescout/headless-browser/issues"
+  },
+  "homepage": "https://github.com/Junglescout/headless-browser#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
