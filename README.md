@@ -4,7 +4,7 @@ Simple in-memory browser that manages cookies.
 
 ## Usage
 
-> npm install @mcrowe/headless-browser --save
+> npm install @Junglescout/headless-browser --save
 
 ## Development
 

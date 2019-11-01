@@ -1,6 +1,6 @@
 {
   "name": "@mcrowe/headless-browser",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple in-memory browser that manages cookies.",
   "author": "Mitch Crowe <code@mitchcrowe.com> (http://www.mitchcrowe.com)",
   "license": "ISC",
@@ -16,8 +16,7 @@
     "lib/"
   ],
   "dependencies": {
-    "@mcrowe/result": "0.0.2",
-    "request": "git+https://git@github.com/mcrowe/request.git"
+    "@mcrowe/result": "0.0.2"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.39",
