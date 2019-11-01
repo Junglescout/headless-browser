@@ -1,7 +1,11 @@
+declare function serialize(object: any): string;
+declare function parse(string: string | undefined): {};
+declare function assign(string: any, key: any, value: any): string;
+declare function parseSetString(string: string): string;
 declare const _default: {
-    serialize: (object: any) => string;
-    parse: (string: string | undefined) => {};
-    assign: (string: any, key: any, value: any) => string;
-    parseSetString: (string: string) => string;
+    serialize: typeof serialize;
+    parse: typeof parse;
+    assign: typeof assign;
+    parseSetString: typeof parseSetString;
 };
 export default _default;
