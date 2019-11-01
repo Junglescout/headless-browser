@@ -1,5 +1,5 @@
 {
-  "name": "@mcrowe/headless-browser",
+  "name": "@junglescout/headless-browser",
   "version": "0.6.0",
   "description": "Simple in-memory browser that manages cookies.",
   "author": "Mitch Crowe <code@mitchcrowe.com> (http://www.mitchcrowe.com)",
