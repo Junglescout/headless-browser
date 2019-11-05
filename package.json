@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@mcrowe/result": "0.0.2",
-    "request": "git+https://git@github.com/mcrowe/request.git"
+    "request": "git+https://git@github.com/Junglescout/request.git"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.39",
