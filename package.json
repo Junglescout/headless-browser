@@ -1,6 +1,6 @@
 {
   "name": "@junglescoutofficial/headless-browser",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Simple in-memory browser that manages cookies.",
   "author": "Mitch Crowe <code@mitchcrowe.com> (http://www.mitchcrowe.com)",
   "license": "ISC",
@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@mcrowe/result": "0.0.2",
-    "request": "^2.88.0"
+    "request": "git+https://git@github.com/mcrowe/request.git"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.39",
