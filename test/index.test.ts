@@ -8,7 +8,7 @@ suite('index', () => {})
 test('set cookies from response', () => {
   const browser = new HeadlessBrowser()
 
-  const cookies = ['NID']
+  const cookies = ['1P_JAR', 'NID']
 
   return browser.get({uri: 'http://www.google.com'}).then(res => {
     assert(res.ok)

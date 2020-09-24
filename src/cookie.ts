@@ -11,6 +11,26 @@ function serialize(object) {
   return str
 }
 
+function extractExpirationDate(cookie: string): number | undefined {
+  const parts: string[] = cookie.split(';')
+  for (const part of parts) {
+    const [key, value] = part.split('=')
+    if (!!key && key.trim().toLowerCase() === 'expires') {
+      return +new Date(value)
+    }
+  }
+  return
+}
+
+function isExpired(cookie: string): boolean {
+    const currentDate: number = +new Date()
+    const expirationDate: number | undefined = extractExpirationDate(cookie)
+    if (!expirationDate) {
+      return false
+    }
+  return currentDate > expirationDate
+}
+
 
 function parse(string: string | undefined) {
   if (!string) {
@@ -44,4 +64,4 @@ function parseSetString(string: string) {
 }
 
 
-export default { serialize, parse, assign, parseSetString }
+export default { serialize, parse, assign, parseSetString, isExpired }

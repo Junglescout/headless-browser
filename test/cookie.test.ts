@@ -37,3 +37,11 @@ test('assign', () => {
 test('parseSetString', () => {
   assert.deepEqual('UserPref=-', Cookie.parseSetString('UserPref=-; path=/; domain=.www.amazon.es; expires=Mon, 14-Feb-2005 23:10:43 GMT'))
 })
+
+test('isExpired ===  true', () => {
+  assert.equal(true, Cookie.isExpired('UserPref=-; path=/; domain=.www.amazon.es; expires=Mon, 14-Feb-2005 23:10:43 GMT'))
+})
+
+test('isExpired ===  false', () => {
+  assert.equal(false, Cookie.isExpired('UserPref=-; path=/; domain=.www.amazon.es; expires=Mon, 14-Feb-2200 23:10:43 GMT'))
+})

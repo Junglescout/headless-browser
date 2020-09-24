@@ -127,7 +127,8 @@ export default class HeadlessBrowser {
     const resCookies = res.headers['set-cookie']
 
     if (resCookies) {
-      const cookies = resCookies.map(s => Cookie.parseSetString(s)).join('; ')
+      const validCookies = resCookies.filter(s => Cookie.isExpired(s) === false);
+      const cookies = validCookies.map(s => Cookie.parseSetString(s)).join('; ')
       this.setCookies(cookies)
     }
   }
